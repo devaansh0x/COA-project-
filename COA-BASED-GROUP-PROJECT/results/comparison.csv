@@ -1,0 +1,6 @@
+workload,accesses,base_hits,enh_hits,base_misses,enh_misses,base_hit_rate,enh_hit_rate,base_evictions,enh_evictions,base_stalls,enh_stalls,base_cycles,enh_cycles,hit_rate_improve_pct,hit_rate_gain_points,miss_reduction_pct,speedup
+original,11,5,5,6,6,0.4545,0.4545,0,0,28,28,47,47,0.0,0.0,0.0,1.0
+sequential,64,48,48,16,16,0.75,0.75,0,0,64,64,128,128,0.0,0.0,0.0,1.0
+repeated,64,62,62,2,2,0.9688,0.9688,0,0,8,8,72,72,0.0,0.0,0.0,1.0
+conflict,32,0,30,32,2,0.0,0.9375,31,0,128,8,160,40,0.0,93.75,93.75,4.0
+conflict3,48,0,0,48,48,0.0,0.0,47,46,192,192,240,240,0.0,0.0,0.0,1.0

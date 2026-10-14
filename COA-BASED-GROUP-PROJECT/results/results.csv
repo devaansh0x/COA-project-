@@ -1,0 +1,11 @@
+workload,config,label,reads,writes,hits,misses,read_hits,read_misses,write_hits,write_misses,evictions,instructions,stall_cycles,total_accesses,total_cycles,hit_rate,miss_rate,cpi
+original,baseline,baseline/original,5,6,5,6,4,1,1,5,0,19,28,11,47,0.454545,0.545455,2.473684
+original,enhanced,enhanced/original,5,6,5,6,4,1,1,5,0,19,28,11,47,0.454545,0.545455,2.473684
+sequential,baseline,baseline/sequential,64,0,48,16,48,16,0,0,0,64,64,64,128,0.75,0.25,2.0
+sequential,enhanced,enhanced/sequential,64,0,48,16,48,16,0,0,0,64,64,64,128,0.75,0.25,2.0
+repeated,baseline,baseline/repeated,64,0,62,2,62,2,0,0,0,64,8,64,72,0.96875,0.03125,1.125
+repeated,enhanced,enhanced/repeated,64,0,62,2,62,2,0,0,0,64,8,64,72,0.96875,0.03125,1.125
+conflict,baseline,baseline/conflict,32,0,0,32,0,32,0,0,31,32,128,32,160,0.0,1.0,5.0
+conflict,enhanced,enhanced/conflict,32,0,30,2,30,2,0,0,0,32,8,32,40,0.9375,0.0625,1.25
+conflict3,baseline,baseline/conflict3,48,0,0,48,0,48,0,0,47,48,192,48,240,0.0,1.0,5.0
+conflict3,enhanced,enhanced/conflict3,48,0,0,48,0,48,0,0,46,48,192,48,240,0.0,1.0,5.0

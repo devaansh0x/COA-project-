@@ -1,0 +1,73 @@
+
+========================================================================
+ORIGINAL PROGRAM on BASELINE (direct-mapped)
+========================================================================
+
+[baseline/original] accesses=11 (R=5 W=6) hits=5 misses=6 evictions=0 hit_rate=0.455 miss_rate=0.545 stalls=28 cycles=47 CPI=2.474
+
+Per-access cache trace:
+idx | op | word_addr | set | tag | off | result | stall | value
+----+----+-----------+-----+-----+-----+--------+-------+---------
+  0 | SW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000457
+  1 | SW |         1 |   0 |   0 |   1 | MISS   |     4 | 0xfffff8ae
+  2 | SW |         2 |   0 |   0 |   2 | MISS   |     4 | 0xfffffd05
+  3 | SW |         3 |   0 |   0 |   3 | MISS   |     4 | 0x0000015c
+  4 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000457
+  5 | LW |         1 |   0 |   0 |   1 | HIT    |     0 | 0xfffff8ae
+  6 | LW |         2 |   0 |   0 |   2 | HIT    |     0 | 0xfffffd05
+  7 | LW |         3 |   0 |   0 |   3 | HIT    |     0 | 0x0000015c
+  8 | SW |         0 |   0 |   0 |   0 | HIT    |     4 | 0xfffff8ae
+  9 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0xfffff8ae
+ 10 | SW |        50 |  12 |   0 |   2 | MISS   |     4 | 0xfffff8ae
+
+========================================================================
+CONFLICT WORKLOAD on BASELINE (direct-mapped)
+========================================================================
+
+[baseline/conflict] accesses=16 (R=16 W=0) hits=0 misses=16 evictions=15 hit_rate=0.000 miss_rate=1.000 stalls=64 cycles=80 CPI=5.000
+
+Per-access cache trace (every access conflicts -> MISS):
+idx | op | word_addr | set | tag | off | result | stall | value
+----+----+-----------+-----+-----+-----+--------+-------+---------
+  0 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+  1 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+  2 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+  3 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+  4 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+  5 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+  6 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+  7 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+  8 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+  9 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+ 10 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+ 11 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+ 12 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+ 13 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+ 14 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+ 15 | LW |       128 |   0 |   1 |   0 | MISS   |     4 | 0x00000000
+
+========================================================================
+CONFLICT WORKLOAD on ENHANCED (2-way + LRU)
+========================================================================
+
+[enhanced/conflict] accesses=16 (R=16 W=0) hits=14 misses=2 evictions=0 hit_rate=0.875 miss_rate=0.125 stalls=8 cycles=24 CPI=1.500
+
+Per-access cache trace (two cold misses, then HITs):
+idx | op | word_addr | set | tag | off | result | stall | value
+----+----+-----------+-----+-----+-----+--------+-------+---------
+  0 | LW |         0 |   0 |   0 |   0 | MISS   |     4 | 0x00000000
+  1 | LW |       128 |   0 |   2 |   0 | MISS   |     4 | 0x00000000
+  2 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+  3 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
+  4 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+  5 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
+  6 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+  7 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
+  8 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+  9 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
+ 10 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+ 11 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
+ 12 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+ 13 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
+ 14 | LW |         0 |   0 |   0 |   0 | HIT    |     0 | 0x00000000
+ 15 | LW |       128 |   0 |   2 |   0 | HIT    |     0 | 0x00000000
